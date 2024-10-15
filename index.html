@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peddy</title>
+    <!-- font awesome icons -->
+    <script
+    src="https://kit.fontawesome.com/ad7c647c34.js"
+    crossorigin="anonymous"
+  ></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css" rel="stylesheet" type="text/css" /><script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                greenish: "#0E7A81",
+              },
+            },
+          },
+        };
+      </script>
+      <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="w-11/12 ml-8">
+        <!-- nav part -->
+        <nav>
+            <div>
+                <div class="navbar bg-base-100">
+                    <div class="navbar-start">
+                      <div class="dropdown">
+                        <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M4 6h16M4 12h8m-8 6h16" />
+                          </svg>
+                        </div>
+                        <ul
+                          tabindex="0"
+                          class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                          <li><a>Home</a></li>
+                          <li><a>Shop</a></li>
+                          <li><a>Contact</a></li>
+                        </ul>
+                      </div>
+                      <a class="btn btn-ghost text-xl"><img src="./images/logo.webp" alt=""> Peddy</a>
+                    </div>
+                    <div class="navbar-center hidden lg:flex">
+                      <ul class="menu menu-horizontal px-1">
+                        <li><a href="/">Home</a></li>
+                        <li><summary>Shop</summary>    
+                        </li>
+                        <li><a>Contact</a></li>
+                      </ul>
+                    </div>
+                    <div class="navbar-end">
+                      <a class="border-gray-400 p-2"> <i class="fa-regular fa-user border border-gray-600 rounded-full p-3 bg-white "></i></a>
+                    </div>
+                  </div>
+            </div>
+        </nav>
+
+        <!-- header part -->
+         <div>
+            <div class="hero bg-white">
+                <div class="hero-content text-center">
+                  <div class="max-w-md">
+                    <h4 class="mb-3">Bringing Families Together ❤️‍🔥</h4>
+                    <h1 class="text-4xl font-bold">Your Path to Adoption Starts Here</h1>
+                    <p class="py-5">
+                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.
+                    </p>
+                    <a href="#adopt-container"><button class="btn bg-greenish text-white">View More</button></a>
+                  </div>
+                </div>
+              </div>
+         </div>
+    </header>
+
+<!-- main dog pic -->
+    <main class="w-11/12 ml-8">
+        <div>
+            <div class="hero">
+                <div class="hero-content text-center">
+                  <div class="max-w-md mt-5">
+                    <img src="./images/pet.webp" alt="" class="w-full">
+                    <h1 id="adopt-container" class="font-semibold text-3xl">Adopt  Your  Best Friend</h1>
+                    <p class="py-6">
+                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+                    </p>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+        <!-- buttons -->
+
+        <div id="pet-categories" class="flex gap-4 justify-center lg:justify-between items-center my-4"></div>
+
+        <!-- best deal  sort btn -->
+
+        <section>
+          <div class=" flex justify-around">
+            <p class="text-black font-bold mt-10">Best Deal For you</p>
+            <button onclick="sort()" class="btn bg-greenish text-white m-5">Sort By Price</button>
+          </div>
+         </section>
+
+         <!-- show all pets  -->
+
+         <div class="my-12">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-2">
+            <!-- cards -->
+           <div class="lg:col-span-3">
+
+            <!-- spinner -->
+             <div id="loader" class="hidden">
+              <div class="relative flex justify-center items-center">
+                <div class="absolute animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-teal-700"></div>
+                <img src="images/logo.webp"  class="rounded-full">
+            </div>
+             </div>
+
+             <!-- cards -->
+              <div id="all-pets" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- dynamic pets card here -->
+
+              </div>
+
+           </div>
+           <!-- img -->
+            <div id="liked-pets" class="rounded-xl h-fit w-full border grid grid-cols-2 gap-2 p-2">
+              <!-- dynamic pet image -->
+
+            </div>
+          </div>
+         </div>
+
+    </main>
+
+    <!-- Open the modal using ID.showModal() method -->
+<dialog id="my_modal_4" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box items-center text-center">
+    <h3 class="text-lg font-bold">Congratulations!</h3>
+    <p class="py-4">Adoption will be done in</p>
+    <p id="countdown-container" class="text-5xl mb-4 font-bold">3</p>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+
+
+    <footer>
+        <footer class="footer bg-gray-950 text-white p-10">
+            <nav>
+              <h6 class="footer-title">Services</h6>
+              <a class="link link-hover">Branding</a>
+              <a class="link link-hover">Design</a>
+              <a class="link link-hover">Marketing</a>
+              <a class="link link-hover">Advertisement</a>
+            </nav>
+            <nav>
+              <h6 class="footer-title">Company</h6>
+              <a class="link link-hover">About us</a>
+              <a class="link link-hover">Contact</a>
+              <a class="link link-hover">Jobs</a>
+              <a class="link link-hover">Press kit</a>
+            </nav>
+            <form>
+              <h6 class="footer-title">Newsletter</h6>
+              <fieldset class="form-control w-80">
+                <label class="label">
+                  <span class="label-text text-white">Drop a message</span>
+                </label>
+                <div class="join">
+                  <input
+                    type="text"
+                    placeholder="username@site.com"
+                    class="input input-bordered join-item" />
+                  <button class="btn bg-greenish text-white join-item">Subscribe</button>
+                </div>
+              </fieldset>
+            </form>
+          </footer>
+    </footer>
+    
+
+
+    <script src="utilities.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
